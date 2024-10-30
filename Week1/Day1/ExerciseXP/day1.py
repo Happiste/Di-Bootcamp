@@ -16,3 +16,10 @@ print(result)
 #Exo 4
 brand_computer = "Macbook Pro, intel"
 print(f"i have a {brand_computer}  computer")
+
+#Exo 5
+name = "Jonathan"
+age = 34
+shoe_size = 44
+info = f"my name is {name}, and i'am {age} years old, oh and of course before i forget my shoes size is {shoe_size}"
+print(info)
