@@ -75,27 +75,81 @@
 
 #Exo2
 
-print("please enter a number between 1 and 12 (include)")
-while True:
-    try:
-        ask_number = int(input())
-        if ask_number >= 3 and ask_number <= 5:
-            print("Spring's Time")
-        elif ask_number >= 6 and ask_number <= 8:
-            print("Summer's Time")
-        elif ask_number >= 9 and ask_number <= 11:
-            print("Autumn's Time")
-        elif (ask_number >= 1 and ask_number <=2) or ask_number == 12:
-            print("Winter is coming")
-        else:
-            print("You need to put a number between 1 and 12")
-        break
-    except ValueError:
-        print("You need to put a number between 1 and 12 not a string")
+# print("please enter a number between 1 and 12 (include)")
+# while True:
+#     try:
+#         ask_number = int(input())
+#         if ask_number >= 3 and ask_number <= 5:
+#             print("Spring's Time")
+#         elif ask_number >= 6 and ask_number <= 8:
+#             print("Summer's Time")
+#         elif ask_number >= 9 and ask_number <= 11:
+#             print("Autumn's Time")
+#         elif (ask_number >= 1 and ask_number <=2) or ask_number == 12:
+#             print("Winter is coming")
+#         else:
+#             print("You need to put a number between 1 and 12")
+#         break
+#     except ValueError:
+#         print("You need to put a number between 1 and 12 not a string")
 
+#Exo 1
+#When you type python3 in the terminal,
+#the OS searches through each directory listed 
+#in PATH variable to find the the executable.
 
+#Exo 2 
+# alias "py='python3'" >> ~/.zshrc
+# source ~/.zshrc
 
+#Exo 3
+# >>> 3 <= 3 < 9
+# >>> True
+# >>> 3 == 3 == 3
+# >>> True
+# >>> bool(0)
+# >>> False
+# >>> bool(5 == "5")
+# >>> False
+# >>> bool(4 == 4) == bool("4" == "4")
+# >>> True
+# >>> bool(bool(None))
+# >>> False
+# x = (1 == True)
+# y = (1 == False)
+# a = True + 4
+# b = False + 10
 
+# print("x is", x)
+# >>> True
+# print("y is", y)
+# >>> False
+# print("a:", a)
+# >>> 5
+# print("b:", b)
+# >>> 10
 
+#Exo 4
+# my_text =  """Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+#            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+#            Ut enim ad minim veniam, quis nostrud exercitation ullamco
+#            laboris nisi ut aliquip ex ea commodo consequat. 
+#            Duis aute irure dolor in reprehenderit in voluptate velit 
+#            esse cillum dolore eu fugiat nulla pariatur. 
+#            Excepteur sint occaecat cupidatat non proident, 
+#            sunt in culpa qui officia deserunt mollit anim id est laborum."""
+# print(len(my_text))
 
+#Exo 5
 
+# while True:
+#     long_sentense = input()
+#     num = len(long_sentense)
+#     if 'A' in long_sentense or 'a' in long_sentense:
+#         print("Nop there is an a/A in the sentence!")
+#         continue
+#     else:
+#         num = len(long_sentense)
+#         print(num)
+#     break
+    
