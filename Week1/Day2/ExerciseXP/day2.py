@@ -84,21 +84,47 @@
 # total_price = 10 + 2.5 * len(lst_toppings)
 # print(f"\033[0mYou choose to add {toppings} to your pizza, the price is 10$ for the base and 2,5$ for each topping: {total_price}")
 
-#Exo 9 
+# #Exo 9 - 1, 2, 3
 
-price = 0
-nb = int(input("how much are you ?"))
-print(f"you are {nb}")
-for nb in range(nb):
-    age = int(input("how old are you ? "))
-    print(f"your age is {age}")
-    if age < 3:
-        price = price + 0
-        print(f"actual price : {price}")
-    elif age >= 3 and age <= 12:
-        price = price + 10
-        print(f"actual price : {price}")
-    elif age > 12:
-        price = price + 15
-        print(f"actual price : {price}")
-print(f"total price: {price}")
+# price = 0
+# nb = int(input("how much are you ?"))
+# print(f"you are {nb}")
+# for nb in range(nb):
+#     age = int(input("how old are you ? "))
+#     print(f"your age is {age}")
+#     if age < 3:
+#         price = price + 0
+#         print(f"actual price : {price}")
+#     elif age >= 3 and age <= 12:
+#         price = price + 10
+#         print(f"actual price : {price}")
+#     elif age > 12:
+#         price = price + 15
+#         print(f"actual price : {price}")
+# print(f"total price: {price}")
+
+# #Exo 9 - 4
+# list_name = ["John", "Yaël", "Benjaminn", "David"]
+# final_lst = []
+# for nb in list_name:
+#     age = int(input(f"what is your age {nb}: "))
+#     if 16 <= age <= 21:
+#         final_lst.append(nb)
+#     else:
+#         continue
+# print(final_lst)
+
+#Exo 10
+
+sandwich_orders = ["Tuna sandwich", "Pastrami sandwich", "Avocado sandwich", "Pastrami sandwich", "Egg sandwich", "Chicken sandwich", "Pastrami sandwich"]
+print(f"la commande: {sandwich_orders}")
+finished_sandwiches = []
+for sandwich in sandwich_orders[:]:
+    if sandwich != "Pastrami sandwich":
+        print(f"I made your {sandwich} sandwich")
+        finished_sandwiches.append(sandwich)
+        sandwich_orders.remove(sandwich)
+    else:
+        print(f"je supprime : {sandwich}")
+        sandwich_orders.remove(sandwich)
+print(f"Ce qu'il reste de la commande: {sandwich_orders}\nCe qui a été préparer de la commande: {finished_sandwiches}")
