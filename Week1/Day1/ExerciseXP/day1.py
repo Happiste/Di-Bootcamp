@@ -95,8 +95,7 @@
 
 #Exo 1
 #When you type python3 in the terminal,
-#the OS searches through each directory listed 
-#in PATH variable to find the the executable.
+#the OS searches through each directory listed in PATH variable to find the the executable.
 
 #Exo 2 
 # alias "py='python3'" >> ~/.zshrc
