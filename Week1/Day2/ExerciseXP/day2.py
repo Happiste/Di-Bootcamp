@@ -224,17 +224,150 @@
 # #XP NINJA
 
 # #Exo 1
-c = 50
-h = 30
-d = "100,150,180"#input("please enter many numbers as you want separate by a comma: ")
-lst = d.split(',')
-store = []
-str_result=""
-print(lst)
-for num in lst:
-    result = ((2*c*int(num))/h) ** 0.5
-    str_result += str(int(result)) + ","
-    # store.append(int(result))
-print(str_result.rstrip(','))
+# c = 50
+# h = 30
+# d = "100,150,180"#input("please enter many numbers as you want separate by a comma: ")
+# lst = d.split(',')
+# store = []
+# str_result=""
+# print(lst)
+# for num in lst:
+#     result = ((2*c*int(num))/h) ** 0.5
+#     str_result += str(int(result)) + ","
+#     # store.append(int(result))
+# print(str_result.rstrip(','))
+
+#Exo2
+
+# #variable declaration
+# #lst = [3, 47, 99, -80, 22, 97, 54, -23, 5, 7] 
+# lst = [44, 91, 8, 24, -6, 0, 56, 8, 100, 2] 
+# # lst = [3, 21, 76, 53, 9, -82, -3, 49, 1, 76] 
+# # lst = [18, 19, 2, 56, 33, 17, 41, -63, -82, 1]
+# printed_num = ""
+# sup_num = []
+# min_num = []
+# squared = []
+# #loop
+# for num in lst:
+#     printed_num += str(num) +' '
+#     first = lst[0]
+#     last = lst[-1]
+#     if num >= 50:
+#         sup_num.append(num)
+#     elif num <= 10:
+#         min_num.append(num)
+#     squared.append(num**2)
+# lst1 = list(set(lst))
+# average = sum(lst) / len(lst)
+# max = max(lst)
+# min = min(lst)
+# lst.sort(reverse=True)
+
+# #printing the information 
+# print(f"""Info\n- The list: {printed_num}
+# - The list in descending order: {lst}
+# - The sum of all the numbers: {sum(lst)}
+# - The list of the first and last nupmber: {first} and {last}
+# - The list of numbers >= 50: {sup_num}
+# - The list of numbers <= 10: {min_num}
+# - The list of squared numbers {squared}
+# - The list without duplicate {lst1} there is {len(lst1)} numbers in the list
+# - The average is : {average}
+# - The largest number : {max}
+# - The smallest number: {min}
+# - """)
+
+# import random as r
+# lst = []
+# sum = 0
+# length = 0
+# while len(lst) < 10:
+#     try:
+#         num = int(input("Please enter one number between -100 and 100: "))
+#         if -101 <= num <= 100:
+#             lst.append(num)
+#             sum +=num
+#             length +=1
+#         else:
+#             print("this number is out and range")
+#     except ValueError:
+#         print("please enter a number between the range not a string")
+
+# print(f"""- La liste: {lst},
+# - The sum of all the numbers: {sum}
+# - The average of all the numbers are {sum/length}""")
+
+# import random as r
+# lst = []
+# sum = 0
+# length = 0
+# times = range(int(r.randint(0,100)))
+# for i in times:
+#     num = r.randint(-100, 100)
+    
+#     if -101 <= num <= 100:
+#         lst.append(num)
+#         min = lst[0]
+#         max = lst[0]
+#         for num in lst:
+#             if num > max:
+#                 max = num
+#             if num < min:
+#                 min = num
+#         sum +=num
+#         length +=1
+# print(f"""- La liste: {lst},
+# - The sum of all the numbers: {sum}
+# - The average of all the numbers are {sum/length}
+# - lenght of the generated list: {length}
+# - The Min: {min}
+# - The max: {max}""")
+
+# #Exo3
+
+# txt = """L'Éternel est mon berger : je ne manquerai de rien.
+# Il me fait reposer dans de verts pâturages,
+# Il me dirige près des eaux paisibles.
+# Il restaure mon âme,
+# Il me conduit dans les sentiers de la justice,
+# À cause de son nom.
+# Quand je marche dans la vallée de l'ombre de la mort,
+# Je ne crains aucun mal, car tu es avec moi :
+# Ta houlette et ton bâton me rassurent.
+# Tu dresses devant moi une table,
+# En face de mes adversaires ;
+# Tu oins d'huile ma tête, et ma coupe déborde.
+# Oui, le bonheur et la grâce m'accompagneront
+# Tous les jours de ma vie,
+# Et j'habiterai dans la maison de l'Éternel
+# Jusqu'à la fin de mes jours."""
+
+# length = len(txt)
+# sentences = 0
+# lst = txt.split()
+# unique = set(lst)
+# len_wo_space = len([i for i in txt if i != " "])
+# for i in txt:
+#     if i == "\n":
+#         sentences += 1
+
+# print(f"""This psaume contain {length} characters.
+# This psaume contain {sentences} sentences
+# This psaume contain {len(lst)} words
+# This psaume contain {len(unique)} unique words
+# This psaume contain {len_wo_space} characters withou the spaces
+# The average of words per sentences is {len(lst)/sentences}
+# The amount of non unique words is {len(lst) - len(unique)} """)
+
+#Exo 4
+
+
+import collections as c
+string = "New to Python or choosing between Python 2 and Python 3? Read Python 2 or Python 3."
+lst = string.split()
+dic = c.Counter(lst)
+print(dic)
+
 
 
