@@ -15,9 +15,6 @@
 #     for x in lst:
 #         letters += x
 #         print(letters)
-    
-
-
         
     
 
