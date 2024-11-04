@@ -360,14 +360,14 @@
 # The average of words per sentences is {len(lst)/sentences}
 # The amount of non unique words is {len(lst) - len(unique)} """)
 
-#Exo 4
+# #Exo 4
 
 
-import collections as c
-string = "New to Python or choosing between Python 2 and Python 3? Read Python 2 or Python 3."
-lst = string.split()
-dic = c.Counter(lst)
-print(dic)
+# import collections as c
+# string = "New to Python or choosing between Python 2 and Python 3? Read Python 2 or Python 3."
+# lst = string.split()
+# dic = c.Counter(lst)
+# print(dic)
 
 
 
