@@ -9,15 +9,11 @@
 #      lst.append(ask_num*i)
 # print(lst)
 
-#Challenge 2
+# #Challenge 2
 
-word = input("please enter a string: ")
-new_word = ""
-for i in word:
-    if len(new_word) == 0 or i != new_word[-1]:
-        new_word +=i
-
-
-
-    
-print(new_word)
+# word = input("please enter a string: ")
+# new_word = ""
+# for i in word:
+#     if len(new_word) == 0 or i != new_word[-1]:
+#         new_word +=i
+# print(new_word)
