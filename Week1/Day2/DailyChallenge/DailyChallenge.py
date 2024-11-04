@@ -17,3 +17,19 @@
 #     if len(new_word) == 0 or i != new_word[-1]:
 #         new_word +=i
 # print(new_word)
+
+#DailyChallenge Gold
+# birthday = input("what is your date of birth (DD/MM/YYYY): ")
+# nb_candles = int(birthday[1])
+# #print("i" * nb_candles)
+# candles = "i"*nb_candles
+# print(f"""
+#        ___{candles}___
+#       |:H:a:p:p:y:|
+#     __|___________|__
+#    |^^^^^^^^^^^^^^^^^|
+#    |:B:i:r:t:h:d:a:y:|
+#    |                 |
+#    ~~~~~~~~~~~~~~~~~~~""")
+
+

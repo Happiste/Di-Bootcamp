@@ -60,13 +60,13 @@
     
 # Exo 7
 
-# fav_fruits = "banana kiwi blueberries" #input("what is your favorit fruits? :")
-# lst_fruits = fav_fruits.split()
-# ask = input("Chose a fruit please : ")
-# if ask in lst_fruits:
-#     print("You chose one of your favorite fruits! Enjoy!")
-# else:
-#     print("You chose a new fruit. I hope you enjoy")
+fav_fruits =  input("what is your favorit fruits? :")
+lst_fruits = fav_fruits.split()
+ask = input("Chose a fruit please : ")
+if ask in lst_fruits:
+    print("You chose one of your favorite fruits! Enjoy!")
+else:
+    print("You chose a new fruit. I hope you enjoy")
 
 # Exo 8 
 
