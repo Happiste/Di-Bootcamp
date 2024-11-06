@@ -1,7 +1,7 @@
 # #Exo 1
 # keys = ['Ten', 'Twenty', 'Thirty']
 # values = [10, 20, 30]
-# dico = dict(zip(keys, values))
+# dico = dict(zip(keys, values)
 # print(dico)
 
 #Exo 2
@@ -140,7 +140,7 @@
 #         student_letter_grade[student] = "F"
 #     print(f"{student} à {round(average)} de moyenne générale. Lettre {student_letter_grade[student]}")
 
-# #Ex0 2
+#Ex0 2
  
 # sales_data = [
 #     {"customer_id": 1, "product": "Smartphone", "price": 600, "quantity": 1, "date": "2023-04-03"},
@@ -154,13 +154,24 @@
 
 # for each_line in sales_data:
 #     each_line["total_price"] = each_line["price"]*each_line["quantity"]
-# print(f"1ER TABLEAU :\n {sales_data}\n\n\n")
+
 # transaction_list = [transaction for transaction in sales_data if transaction["total_price"] > 500]
 # sales_data.sort(key=lambda x: x["total_price"], reverse=True)
 
-# print(f"2EME TABLEAU : \n{sales_data}")
+# count = {}
+# for transaction in sales_data:
+#     customer_id = transaction["customer_id"]
+#     if customer_id in count:
+#         count[customer_id] += 1
+#     else: 
+#         count[customer_id] = 1
+# print(count)
 
-# print()
+# # purchase_customer= [customer["customer_id"] for customer in sales_data if customer["quantity"] > 1]
+# # print(f"\n\n{purchase_customer}\n\n")
+
+
+
 
 # total_revenu_by_product = {}
 # for sale in sales_data:
