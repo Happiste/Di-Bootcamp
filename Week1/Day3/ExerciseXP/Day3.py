@@ -160,7 +160,7 @@
 
 # print(f"2EME TABLEAU : \n{sales_data}")
 
-print()
+# print()
 
 # total_revenu_by_product = {}
 # for sale in sales_data:
