@@ -133,59 +133,62 @@
 
 # main()
     
-#Exo 8 
+# #Exo 8 
 
-data = [
-    {
-        "question": "What is Baby Yoda's real name?",
-        "answer": "Grogu"
-    },
-    {
-        "question": "Where did Obi-Wan take Luke after his birth?",
-        "answer": "Tatooine"
-    },
-    {
-        "question": "What year did the first Star Wars movie come out?",
-        "answer": "1977"
-    },
-    {
-        "question": "Who built C-3PO?",
-        "answer": "Anakin Skywalker"
-    },
-    {
-        "question": "Anakin Skywalker grew up to be who?",
-        "answer": "Darth Vader"
-    },
-    {
-        "question": "What species is Chewbacca?",
-        "answer": "Wookiee"
-    }
-]
+# data = [
+#     {
+#         "question": "What is Baby Yoda's real name?",
+#         "answer": "Grogu"
+#     },
+#     {
+#         "question": "Where did Obi-Wan take Luke after his birth?",
+#         "answer": "Tatooine"
+#     },
+#     {
+#         "question": "What year did the first Star Wars movie come out?",
+#         "answer": "1977"
+#     },
+#     {
+#         "question": "Who built C-3PO?",
+#         "answer": "Anakin Skywalker"
+#     },
+#     {
+#         "question": "Anakin Skywalker grew up to be who?",
+#         "answer": "Darth Vader"
+#     },
+#     {
+#         "question": "What species is Chewbacca?",
+#         "answer": "Wookiee"
+#     }
+# ]
 
-def clean_wrong_answer(lst):
-    for question in lst:
-        print(f'- {question}')
-    return (lst)
+# def clean_wrong_answer(lst):
+#     for question in lst:
+#         print(f'- {question}')
+#     return (lst)
 
-def asking_question(**kwargs):
-    count = 0
-    wrong_answer = []
-    for index, question in enumerate(data):
-        question = data[index]["question"]
-        answer = data[index]["answer"]
-        print(f"question {index}: {question}")
-        answer_user = input(f">>>> ")
-        if answer_user == answer:
-            print("Nice one !")
-            count += 1
-        else:
-            print("wrong")
-            wrong_answer.append(question)
-    print(f"you have {count} points !")
-    if wrong_answer:
-        print(f"here the question you were wrong:\n", )
-        clean_wrong_answer(wrong_answer)
-    else: 
-        print("Congrats !")
+# def asking_question(**kwargs):
+#     count = 0
+#     wrong_answer = []
+#     for index, question in enumerate(data):
+#         question = data[index]["question"]
+#         answer = data[index]["answer"]
+#         print(f"question {index}: {question}")
+#         answer_user = input(f">>>> ")
+#         if answer_user == answer:
+#             print("Nice one !")
+#             count += 1
+#         else:
+#             print("wrong")
+#             wrong_answer.append(question)
+#     print(f"you have {count} points !")
+#     if wrong_answer:
+#         print(f"here the question you were wrong:\n", )
+#         clean_wrong_answer(wrong_answer)
+#     else: 
+#         print("Congrats !")
 
-asking_question()
+# asking_question()
+
+string ="john555"
+print(string.isalnum())
