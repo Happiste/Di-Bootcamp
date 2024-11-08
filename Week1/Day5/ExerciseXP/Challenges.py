@@ -259,15 +259,15 @@
 
 # print(my_split(sentences))
 
-# #Exo 20
+#Exo 20
 
-# def my_password(password):
-#     hidden_pass = ""
-#     for char in password:
-#         hidden_pass += "*"
-#     return(hidden_pass)
+def my_password(password):
+    hidden_pass = ""
+    for char in password:
+        hidden_pass += "*"
+    return(hidden_pass)
 
-# print(my_password(input("enttrer votre password :")))
+print(my_password(input("enttrer votre password :")))
         
         
 
