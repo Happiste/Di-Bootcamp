@@ -64,3 +64,7 @@ your_dog = Dog("happy", 10, 35)
 print(my_dog.bark())
 my_dog.run_speed()
 print(my_dog.fight(your_dog))
+
+
+
+
