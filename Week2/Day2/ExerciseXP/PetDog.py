@@ -4,9 +4,9 @@ import ExcerciceXP as x
 import random as r
 
 class PetDog(x.Dog):
-    def __init__(self, name, age, weight, trained=False):
+    def __init__(self, name, age, weight):
         super().__init__(name, age, weight)
-        self.trained = trained
+        self.trained = False
 
     def train(self):
         print(self.bark())
@@ -33,7 +33,7 @@ class PetDog(x.Dog):
         
 
 
-his_dog = PetDog("Edouard", 8, 35, False)
-#his_dog.train()
+his_dog = PetDog("Edouard", 8, 35)
+his_dog.train()
 his_dog.play(x.my_dog, x.your_dog)
 his_dog.do_a_trick()
