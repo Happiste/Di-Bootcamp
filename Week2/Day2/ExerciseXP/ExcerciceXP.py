@@ -66,6 +66,9 @@
 # print(my_dog.fight(your_dog))
 
 
+# #EXO3 Voir PetDog.py
+
+
 # #excercice 4 Family
 
 # class Family:
@@ -112,7 +115,11 @@
 #     famille_bitane.born(name="Trafik", age = 0, gender = "Male", is_child=True)
 #     famille_bitane.show_family()
 #     famille_bitane.is_18("John")
-        
+
+
+
+
+  #EXCERCICE 5 >> VOIR Incredible_family.py     
 
     
 
