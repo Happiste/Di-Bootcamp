@@ -71,55 +71,55 @@
 
 # #excercice 4 Family
 
-# class Family:
-#     def __init__(self, last_name, members):
-#         self.last_name = last_name
-#         self.members = members
+class Family:
+    def __init__(self, last_name, members):
+        self.last_name = last_name
+        self.members = members
 
-#     def born(self, **kwargs):
-#         self.members.append(kwargs)
-#         print(f"Mazal Tov ! {kwargs["name"]} is born ! ")
-
-
-#     def is_18(self, name):
-#         for index, person in enumerate(self.members):
-#             if person["name"] == name and self.members[index]["age"] >= 18:
-#                 # print(f"{name} est majeur")
-#                 return True
-#             elif person["name"] == name and self.members[index]["age"] < 18:
-#                 # print(f"{name} est mineur")
-#                 return False
-#         else:
-#             print(f"{name} does not exist in this family")
-
-#     def show_family(self):
-#         print(f"              \033[34m{self.last_name.upper()}'s Family\033[0m")
-#         for index, person in enumerate(self.members):
-#             print(
-# f"""                     NAME: {person["name"]}
-# - AGE:{person["age"]} - GENDER: {person["gender"]} - IS CHILD?: {person["is_child"]}
-# """)
+    def born(self, **kwargs):
+        self.members.append(kwargs)
+        print(f"Mazal Tov ! {kwargs["name"]} is born ! ")
 
 
+    def is_18(self, name):
+        for index, person in enumerate(self.members):
+            if person["name"] == name and self.members[index]["age"] >= 18:
+                # print(f"{name} est majeur")
+                return True
+            elif person["name"] == name and self.members[index]["age"] < 18:
+                # print(f"{name} est mineur")
+                return False
+        else:
+            print(f"{name} does not exist in this family")
 
-# my_family = [
-#     {'name':'GP','age':31,'gender':'Male','is_child':False},
-#     {'name':'Celine','age':32,'gender':'Female','is_child':False}
-# ]
-
-# if __name__ =='__main__':
-#     famille_bitane = Family("Bitane", my_family)
-#     famille_bitane.born(name="Jenny", age = 4, gender = "Female", is_child=True)
-#     famille_bitane.born(name="John", age = 2, gender = "Male", is_child=True)
-#     famille_bitane.born(name="MickMick", age = 0, gender = "Male", is_child=True)
-#     famille_bitane.born(name="Trafik", age = 0, gender = "Male", is_child=True)
-#     famille_bitane.show_family()
-#     famille_bitane.is_18("John")
+    def show_family(self):
+        print(f"              \033[34m{self.last_name.upper()}'s Family\033[0m")
+        for index, person in enumerate(self.members):
+            print(
+f"""                     NAME: {person["name"]}
+- AGE:{person["age"]} - GENDER: {person["gender"]} - IS CHILD?: {person["is_child"]}
+""")
 
 
 
+my_family = [
+    {'name':'GP','age':31,'gender':'Male','is_child':False},
+    {'name':'Celine','age':32,'gender':'Female','is_child':False}
+]
 
-  #EXCERCICE 5 >> VOIR Incredible_family.py     
+if __name__ =='__main__':
+    famille_bitane = Family("Bitane", my_family)
+    famille_bitane.born(name="Jenny", age = 4, gender = "Female", is_child=True)
+    famille_bitane.born(name="John", age = 2, gender = "Male", is_child=True)
+    famille_bitane.born(name="MickMick", age = 0, gender = "Male", is_child=True)
+    famille_bitane.born(name="Trafik", age = 0, gender = "Male", is_child=True)
+    famille_bitane.show_family()
+    famille_bitane.is_18("John")
+
+
+
+
+ # # EXCERCICE 5 >> VOIR Incredible_family.py     
 
     
 

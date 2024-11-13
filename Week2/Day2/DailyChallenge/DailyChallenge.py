@@ -3,6 +3,7 @@ class Pagination:
         self.items = items
         self.pageSize = pageSize
         self.currentPage = 1
+        self.totalPage = 
 
     def getVisibleItems(self):
 
