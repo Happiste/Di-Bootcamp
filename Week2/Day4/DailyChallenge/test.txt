@@ -1,0 +1,1 @@
+The goal of the exercise is to create a class that will help you analyze a specific text. A text can be just a simple string, like Today, is a happy day for it can be an external text file
