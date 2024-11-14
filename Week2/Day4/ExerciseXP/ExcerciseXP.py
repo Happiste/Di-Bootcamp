@@ -34,33 +34,33 @@
 # main()
 
 
-#Excercise 2: Work with Json
+# #Excercise 2: Work with Json
 
-import json
+# # import json
 
-sampleJson = """{ 
-   "company":{ 
-      "employee":{ 
-         "name":"emma",
-         "payable":{ 
-            "salary":7000,
-            "bonus":800
-         }
-      }
-   }
-}"""
+# # sampleJson = """{ 
+# #    "company":{ 
+# #       "employee":{ 
+# #          "name":"emma",
+# #          "payable":{ 
+# #             "salary":7000,
+# #             "bonus":800
+# #          }
+# #       }
+# #    }
+# # }"""
 
-sample = json.loads(sampleJson)
-salary_value = sample["company"]["employee"]["payable"]["salary"]
-print(salary_value)
-sample["company"]["employee"]["birthdate"] = "14/12/1988"
-print(sample)
-sample_json_string = json.dumps(sample, indent=2)
-print(sample_json_string)
+# # sample = json.loads(sampleJson)
+# # salary_value = sample["company"]["employee"]["payable"]["salary"]
+# # print(salary_value)
+# # sample["company"]["employee"]["birthdate"] = "14/12/1988"
+# # print(sample)
+# # sample_json_string = json.dumps(sample, indent=2)
+# # print(sample_json_string)
 
 
-with open("my_file.json", "w") as path:
-    json.dump(sample, path, indent=4)
+# # with open("my_file.json", "w") as path:
+# #     json.dump(sample, path, indent=4)
 
 
 
