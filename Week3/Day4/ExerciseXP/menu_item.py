@@ -74,9 +74,22 @@ class MenuItem:
         cursor.execute(query, (new_name, new_price, self.name))
         self.name = new_name
         self.price = new_price
-        print
+        print("l'item a bien ete updater")
         cursor.close()
         connection.close()
+
+    def show(self):
+        connection, cursor = link()
+        if connection is None:
+            return
+        query = '''Select * from menu_items'''
+        cursor.execute(query)
+        result = cursor.fetchall()
+        for row in result:
+            print(row)
+        cursor.close() 
+        connection.close()
+
 
 
 if __name__=='__main__':
@@ -84,4 +97,5 @@ if __name__=='__main__':
     item = MenuItem('Pizza', 55)
     item.save()
     item.update('Shakshuka', 65)
+    item.show()
 

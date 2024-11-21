@@ -41,4 +41,4 @@ create_table_query = f'''CREATE TABLE random_countries (
 cursor.execute(create_table_query)
 connection.commit()
 cursor.close
-connection.close
+connection.close    
