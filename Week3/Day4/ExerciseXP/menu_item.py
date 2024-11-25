@@ -85,8 +85,9 @@ class MenuItem:
         query = '''Select * from menu_items'''
         cursor.execute(query)
         result = cursor.fetchall()
-        for row in result:
+        for row in range(len(result)):
             print(row)
+            break
         cursor.close() 
         connection.close()
 

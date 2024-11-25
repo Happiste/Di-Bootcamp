@@ -38,7 +38,6 @@ create_table_query = f'''CREATE TABLE random_countries (
                         population INTEGER)'''
 
 
-cursor.execute(create_table_query)
-connection.commit()
-cursor.close
-connection.close    
+
+
+if __name__:'__main__':
