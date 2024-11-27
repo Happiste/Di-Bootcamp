@@ -1,0 +1,22 @@
+{
+    "meals": [
+        {
+            "meal_name": "pizza",
+            "calories": 199
+        },
+        {
+            "meal_name": "pizza",
+            "calories": 199
+        }
+    ],
+    "workouts": [
+        {
+            "workout_name": "jumping rope",
+            "calories": 871
+        },
+        {
+            "workout_name": "jumping rope",
+            "calories": 871
+        }
+    ]
+}
