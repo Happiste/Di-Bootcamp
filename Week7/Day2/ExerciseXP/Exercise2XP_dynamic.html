@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Delayed Change</title>
+    <script>
+
+        window.onload = function() {
+            const heading = document.getElementById("dynamic-heading");
+            setTimeout(() => {
+                heading.textContent = "This is now the Dynamic Page!";
+                heading.style.color = "red";
+                heading.style.fontSize = "2.5em"; 
+            }, 3000);
+        };
+    </script>
+</head>
+<body>
+    <h1 id="dynamic-heading">Welcome to the Static Page</h1>
+    <p>Wait for 3 seconds, and you'll see the heading above change dynamically!</p>
+</body>
+</html>
