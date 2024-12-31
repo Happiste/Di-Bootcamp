@@ -1,0 +1,176 @@
+-- EXERCISE 1
+
+-- TASK 1
+-- SELECT 
+--     m.medal_name,
+--     (
+--         SELECT AVG(gc.age)
+--         FROM olympics.games_competitor gc
+--         JOIN olympics.competitor_event ce ON gc.person_id = ce.competitor_id
+--         WHERE ce.medal_id = m.id AND gc.age IS NOT NULL
+--     ) AS avg_age
+-- FROM olympics.medal m;
+
+-- TASK 2
+-- WITH CompetitorsWithEvents AS (
+--     SELECT
+--         ce.competitor_id,
+--         COUNT(DISTINCT ce.event_id) AS event_count
+--     FROM
+--         olympics.competitor_event ce
+--     GROUP BY
+--         ce.competitor_id
+--     HAVING
+--         COUNT(DISTINCT ce.event_id) > 3
+-- ),
+-- RegionsWithCompetitors AS (
+--     SELECT
+--         pr.region_id,
+--         pr.person_id
+--     FROM
+--         olympics.person_region pr
+--     JOIN
+--         CompetitorsWithEvents cwe
+--         ON pr.person_id = cwe.competitor_id
+-- )
+-- SELECT
+--     rwc.region_id,
+--     COUNT(DISTINCT rwc.person_id) AS unique_competitors
+-- FROM
+--     RegionsWithCompetitors rwc
+-- GROUP BY
+--     rwc.region_id
+-- ORDER BY
+--     unique_competitors DESC
+-- LIMIT 5;
+
+-- TASK 3
+-- CREATE TEMP TABLE competitor_medals AS
+-- SELECT 
+--     ce.competitor_id,
+--     COUNT(ce.medal_id) AS total_medals
+-- FROM 
+--     olympics.competitor_event ce
+-- WHERE 
+--     ce.medal_id IS NOT NULL
+-- GROUP BY 
+--     ce.competitor_id;
+
+-- -- Étape 2: Filtrer les compétiteurs ayant gagné plus de 2 médailles
+-- SELECT 
+--     competitor_id,
+--     total_medals
+-- FROM 
+--     competitor_medals
+-- WHERE 
+--     total_medals > 2;
+
+
+-- TASK 4
+-- DELETE FROM competitor_medals
+-- WHERE competitor_id IN (
+--     SELECT DISTINCT ce.competitor_id
+--     FROM olympics.competitor_event ce
+--     WHERE ce.medal_id IS NULL
+-- );
+
+-- EXERCISE 2 
+
+--TASK 1
+
+-- UPDATE olympics.person p
+-- SET height = (
+--     SELECT AVG(p2.height)
+--     FROM olympics.person p2
+--     JOIN olympics.person_region pr2 ON p2.id = pr2.person_id
+--     WHERE pr2.region_id = (
+--         SELECT pr.region_id
+--         FROM olympics.person_region pr
+--         WHERE pr.person_id = p.id
+--     )
+--     AND p2.height IS NOT NULL
+-- )
+-- WHERE height IS NULL;
+
+-- TASK 2 
+
+-- CREATE TEMP TABLE competitor_multiple_events AS
+-- SELECT 
+--     subquery.competitor_id,
+--     subquery.games_id,
+--     subquery.total_events
+-- FROM (
+--     SELECT 
+--         ce.competitor_id,
+--         gc.games_id,
+--         COUNT(DISTINCT ce.event_id) AS total_events
+--     FROM 
+--         olympics.competitor_event ce
+--     JOIN 
+--         olympics.games_competitor gc
+--         ON ce.competitor_id = gc.person_id
+--     WHERE ce.event_id IS NOT NULL
+--     GROUP BY 
+--         ce.competitor_id, gc.games_id
+--     HAVING 
+--         COUNT(DISTINCT ce.event_id) > 1
+-- ) AS subquery;
+
+--TASK 3
+-- SELECT 
+--     subquery.region_id,
+--     AVG(subquery.total_medals) AS avg_medals_per_competitor
+-- FROM (
+--     SELECT 
+--         pr.region_id,
+--         COUNT(ce.medal_id) AS total_medals
+--     FROM 
+--         olympics.person_region pr
+--     JOIN 
+--         olympics.competitor_event ce ON pr.person_id = ce.competitor_id
+--     WHERE 
+--         ce.medal_id IS NOT NULL
+--     GROUP BY 
+--         pr.region_id, pr.person_id
+-- ) AS subquery
+-- GROUP BY 
+--     subquery.region_id
+-- HAVING 
+--     AVG(subquery.total_medals) > (
+--         SELECT AVG(total_medals)
+--         FROM (
+--             SELECT 
+--                 COUNT(ce.medal_id) AS total_medals
+--             FROM 
+--                 olympics.person_region pr
+--             JOIN 
+--                 olympics.competitor_event ce ON pr.person_id = ce.competitor_id
+--             WHERE 
+--                 ce.medal_id IS NOT NULL
+--             GROUP BY 
+--                 pr.person_id
+--         ) AS overall_avg
+--     );
+
+
+-- TASK 4
+
+-- CREATE TEMP TABLE competitor_seasons AS
+-- SELECT 
+--     gc.person_id,
+--     ARRAY_AGG(DISTINCT g.season) AS seasons_participated
+-- FROM 
+--     olympics.games_competitor gc
+-- JOIN 
+--     olympics.games g ON gc.games_id = g.id
+-- GROUP BY 
+--     gc.person_id;
+
+
+-- SELECT 
+--     person_id,
+--     seasons_participated
+-- FROM 
+--     competitor_seasons
+-- WHERE 
+--     ARRAY_LENGTH(seasons_participated, 1) = 2;

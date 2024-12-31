@@ -1,0 +1,62 @@
+--EXERCISE 1
+--TASK1
+-- CREATE TEMP TABLE competitors_summer_winter AS
+-- SELECT 
+--     gc.person_id AS competitor_id,
+--     g.season,
+--     COUNT(ce.medal_id) AS medal_count
+-- FROM 
+--     olympics.games_competitor gc
+-- JOIN 
+--     olympics.games g ON gc.games_id = g.id
+-- JOIN 
+--     olympics.competitor_event ce ON gc.person_id = ce.competitor_id
+-- WHERE 
+--     ce.medal_id IS NOT NULL
+-- GROUP BY 
+--     gc.person_id, g.season
+-- HAVING 
+--     COUNT(ce.medal_id) > 0;
+
+-- -- Étape 2 : Filtrer les compétiteurs ayant des médailles dans les deux saisons
+-- SELECT 
+--     csw.competitor_id,
+--     SUM(CASE WHEN csw.season = 'Summer' THEN csw.medal_count ELSE 0 END) AS summer_medals,
+--     SUM(CASE WHEN csw.season = 'Winter' THEN csw.medal_count ELSE 0 END) AS winter_medals
+-- FROM 
+--     competitors_summer_winter csw
+-- GROUP BY 
+--     csw.competitor_id
+-- HAVING 
+--     SUM(CASE WHEN csw.season = 'Summer' THEN csw.medal_count ELSE 0 END) > 0
+--     AND SUM(CASE WHEN csw.season = 'Winter' THEN csw.medal_count ELSE 0 END) > 0;
+
+--TASK2
+-- CREATE TEMP TABLE competitors_two_sports AS
+-- SELECT 
+--     ce.competitor_id,
+--     COUNT(DISTINCT e.sport_id) AS distinct_sports,
+--     COUNT(ce.medal_id) AS total_medals
+-- FROM 
+--     olympics.competitor_event ce
+-- JOIN 
+--     olympics.event e ON ce.event_id = e.id
+-- WHERE 
+--     ce.medal_id IS NOT NULL
+-- GROUP BY 
+--     ce.competitor_id
+-- HAVING 
+--     COUNT(DISTINCT e.sport_id) = 2;
+
+-- SELECT 
+--     cts.competitor_id,
+--     cts.total_medals
+-- FROM 
+--     competitors_two_sports cts
+-- ORDER BY 
+--     cts.total_medals DESC
+-- LIMIT 3;
+
+-- EXERCISE 2
+
+
