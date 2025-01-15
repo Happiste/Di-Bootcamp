@@ -1,0 +1,144 @@
+-- WITH BudgetGrowth AS (
+--     SELECT 
+--         pc.company_id,
+--         pc.company_name,
+--         m.title AS movie_title,
+--         m.budget,
+--         LAG(m.budget) OVER (PARTITION BY pc.company_id ORDER BY m.release_date) AS prev_budget,
+--         CASE 
+--             WHEN LAG(m.budget) OVER (PARTITION BY pc.company_id ORDER BY m.release_date) > 0 THEN
+--                 (m.budget - LAG(m.budget) OVER (PARTITION BY pc.company_id ORDER BY m.release_date)) * 1.0 /
+--                 LAG(m.budget) OVER (PARTITION BY pc.company_id ORDER BY m.release_date)
+--             ELSE 
+--                 NULL
+--         END AS growth_rate
+--     FROM 
+--         movies.production_company AS pc
+--     JOIN 
+--         movies.movie_company AS mc ON pc.company_id = mc.company_id
+--     JOIN 
+--         movies.movie AS m ON mc.movie_id = m.movie_id
+--     WHERE 
+--         m.budget IS NOT NULL
+-- )
+-- SELECT 
+--     company_name,
+--     AVG(growth_rate) AS avg_growth_rate
+-- FROM 
+--     BudgetGrowth
+-- WHERE 
+--     growth_rate IS NOT NULL
+-- GROUP BY 
+--     company_name
+-- ORDER BY 
+--     avg_growth_rate DESC;
+
+
+
+
+-- WITH MovieRatings AS (
+--     SELECT 
+--         AVG(m.vote_average) AS avg_movie_rating
+--     FROM 
+--         movies.movie AS m
+--     WHERE 
+--         m.vote_average IS NOT NULL
+-- ),
+-- HighRatedMovies AS (
+--     SELECT 
+--         mc.person_id,
+--         p.person_name,
+--         COUNT(m.movie_id) AS movie_count
+--     FROM 
+--         movies.movie_cast AS mc
+--     JOIN 
+--         movies.person AS p ON mc.person_id = p.person_id
+--     JOIN 
+--         movies.movie AS m ON mc.movie_id = m.movie_id
+--     WHERE 
+--         m.vote_average > (SELECT avg_movie_rating FROM MovieRatings)
+--     GROUP BY 
+--         mc.person_id, p.person_name
+-- ),
+-- RankedActors AS (
+--     SELECT 
+--         person_name,
+--         movie_count,
+--         RANK() OVER (ORDER BY movie_count DESC) AS rank
+--     FROM 
+--         HighRatedMovies
+-- )
+-- SELECT 
+--     person_name,
+--     movie_count
+-- FROM 
+--     RankedActors
+-- WHERE 
+--     rank = 1;
+
+
+-- SELECT 
+--     g.genre_name,
+--     m.title AS movie_title,
+--     COALESCE(m.revenue, 0) AS revenue, -- Remplace les valeurs NULL par 0
+--     AVG(COALESCE(m.revenue, 0)) OVER (
+--         PARTITION BY g.genre_name 
+--         ORDER BY m.release_date 
+--         ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
+--     ) AS rolling_avg_revenue
+-- FROM 
+--     movies.genre AS g
+-- JOIN 
+--     movies.movie_genres AS mg ON g.genre_id = mg.genre_id
+-- JOIN 
+--     movies.movie AS m ON mg.movie_id = m.movie_id
+-- WHERE 
+--     m.revenue IS NOT NULL
+-- ORDER BY 
+--     g.genre_name, m.release_date;
+
+
+-- WITH MovieSeriesRevenue AS (
+--     SELECT 
+--         k.keyword_name AS series_name,
+--         m.title AS movie_title,
+--         SUM(m.revenue) OVER (PARTITION BY k.keyword_name) AS total_series_revenue
+--     FROM 
+--         movies.keyword AS k
+--     JOIN 
+--         movies.movie_keywords AS mk ON k.keyword_id = mk.keyword_id
+--     JOIN 
+--         movies.movie AS m ON mk.movie_id = m.movie_id
+--     WHERE 
+--         m.revenue IS NOT NULL
+-- ),
+-- RankedSeries AS (
+--     SELECT 
+--         series_name,
+--         MAX(total_series_revenue) AS max_series_revenue
+--     FROM 
+--         MovieSeriesRevenue
+--     GROUP BY 
+--         series_name
+--     ORDER BY 
+--         max_series_revenue DESC
+--     LIMIT 1
+-- )
+-- SELECT 
+--     ms.series_name,
+--     m.title AS movie_title,
+--     m.revenue
+-- FROM 
+--     RankedSeries AS ms
+-- JOIN 
+--     movies.keyword AS k ON ms.series_name = k.keyword_name
+-- JOIN 
+--     movies.movie_keywords AS mk ON k.keyword_id = mk.keyword_id
+-- JOIN 
+--     movies.movie AS m ON mk.movie_id = m.movie_id
+-- WHERE 
+--     m.revenue IS NOT NULL
+-- ORDER BY 
+--     m.revenue DESC;
+
+
