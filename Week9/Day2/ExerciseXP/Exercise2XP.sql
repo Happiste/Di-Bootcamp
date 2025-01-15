@@ -1,0 +1,125 @@
+-- SELECT 
+--     p.person_name AS actor_name,
+--     COUNT(mc.movie_id) AS movie_count,
+--     DENSE_RANK() OVER (ORDER BY COUNT(mc.movie_id) DESC) AS rank
+-- FROM 
+--     movies.person AS p
+-- JOIN 
+--     movies.movie_cast AS mc ON p.person_id = mc.person_id
+-- GROUP BY 
+--     p.person_name
+-- ORDER BY 
+--     rank;
+
+-- WITH DirectorRatings AS (
+--     SELECT 
+--         p.person_name AS director_name,
+--         AVG(m.vote_average) AS avg_rating
+--     FROM 
+--         movies.person AS p
+--     JOIN 
+--         movies.movie_crew AS mc ON p.person_id = mc.person_id
+--     JOIN 
+--         movies.movie AS m ON mc.movie_id = m.movie_id
+--     WHERE 
+--         mc.department_id = (SELECT department_id FROM movies.department WHERE department_name = 'Directing')
+--         AND m.vote_average IS NOT NULL
+--     GROUP BY 
+--         p.person_name
+-- ),
+-- RankedDirectors AS (
+--     SELECT 
+--         director_name,
+--         avg_rating,
+--         RANK() OVER (ORDER BY avg_rating DESC) AS rank
+--     FROM 
+--         DirectorRatings
+-- )
+-- SELECT 
+--     director_name,
+--     avg_rating
+-- FROM 
+--     RankedDirectors
+-- WHERE 
+--     rank = 1;
+
+-- SELECT 
+--     p.person_name AS actor_name,
+--     SUM(m.revenue) OVER (PARTITION BY p.person_name) AS cumulative_revenue
+-- FROM 
+--     movies.person AS p
+-- JOIN 
+--     movies.movie_cast AS mc ON p.person_id = mc.person_id
+-- JOIN 
+--     movies.movie AS m ON mc.movie_id = m.movie_id
+-- WHERE 
+--     m.revenue IS NOT NULL
+-- ORDER BY 
+--     cumulative_revenue DESC;
+
+-- WITH DirectorBudgets AS (
+--     SELECT 
+--         p.person_name AS director_name,
+--         SUM(m.budget) AS total_budget
+--     FROM 
+--         movies.person AS p
+--     JOIN 
+--         movies.movie_crew AS mc ON p.person_id = mc.person_id
+--     JOIN 
+--         movies.movie AS m ON mc.movie_id = m.movie_id
+--     WHERE 
+--         mc.department_id = (SELECT department_id FROM movies.department WHERE department_name = 'Directing')
+--         AND m.budget IS NOT NULL
+--     GROUP BY 
+--         p.person_name
+-- ),
+-- RankedDirectors AS (
+--     SELECT 
+--         director_name,
+--         total_budget,
+--         RANK() OVER (ORDER BY total_budget DESC) AS rank
+--     FROM 
+--         DirectorBudgets
+-- )
+-- SELECT 
+--     director_name,
+--     total_budget
+-- FROM 
+--     RankedDirectors
+-- WHERE 
+--     rank = 1;
+
+-- WITH DirectorBudgets AS (
+--     SELECT 
+--         p.person_name AS director_name,
+--         COALESCE(SUM(m.budget), 0) AS total_budget
+--     FROM 
+--         movies.person AS p
+--     JOIN 
+--         movies.movie_crew AS mc ON p.person_id = mc.person_id
+--     JOIN 
+--         movies.movie AS m ON mc.movie_id = m.movie_id
+--     WHERE 
+--         mc.department_id = (SELECT department_id FROM movies.department WHERE department_name = 'Directing')
+--         AND m.budget IS NOT NULL
+--     GROUP BY 
+--         p.person_name
+-- ),
+-- RankedDirectors AS (
+--     SELECT 
+--         director_name,
+--         total_budget,
+--         RANK() OVER (ORDER BY total_budget DESC) AS rank
+--     FROM 
+--         DirectorBudgets
+-- )
+-- SELECT 
+--     director_name,
+--     total_budget
+-- FROM 
+--     RankedDirectors
+-- WHERE 
+--     rank = 1;
+
+
+
